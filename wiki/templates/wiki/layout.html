@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wikipenda</title>
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'wiki/styles.css' %}"
+    />
+    <style>
+      #sidebar {
+        width: 250px;
+        background-color: #f8f9fa;
+        padding: 15px;
+        height: 100vh;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-y: auto;
+      }
+      #main {
+        margin-left: 20%;
+        padding: 20px;
+        flex-grow: 1;
+      }
+
+      #sidebar a {
+        display: block;
+        color: #007bff;
+        padding: 10px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      #sidebar a:hover {
+        background-color: #e9ecef;
+        color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="sidebar">
+      <a href="{% url 'index' %}">Home</a>
+      <a href="{% url 'new_page' %}">Create New Page</a>
+      <a href="{% url 'random_page' %}">Random Page</a>
+    </div>
+
+    <div id="main">
+      <header>
+        <h1>Wikipenda</h1>
+        <form action="{% url 'search' %}" method="get">
+          <input type="text" name="q" placeholder="Search" />
+          <button type="submit">Search</button>
+        </form>
+      </header>
+
+      <div id="content">{% block body %} {% endblock %}</div>
+    </div>
+  </body>
+</html>
