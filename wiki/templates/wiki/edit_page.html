@@ -1,0 +1,9 @@
+{% extends "wiki/layout.html" %} {% block body %}
+<h1>Edit Page: {{ title }}</h1>
+<form action="{% url 'edit_page' title %}" method="post">
+  {% csrf_token %}
+  <textarea id="content" name="content">{{ content }}</textarea>
+  <br />
+  <button type="submit">Save</button>
+</form>
+{% endblock %}
