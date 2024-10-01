@@ -1,1 +1,0 @@
-javacsript have different variable
